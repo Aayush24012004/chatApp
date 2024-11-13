@@ -1,14 +1,18 @@
-import { Route } from "lucide-react";
 import React from "react";
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import Auth from "./views/auth";
-const app = () => {
+import Chat from "./views/chat";
+import Profile from "./views/profile";
+const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_startTransition: true }}>
       <Routes>
         <Route path="/auth" element={<Auth />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<Navigate to="/auth" />} />
       </Routes>
     </BrowserRouter>
   );
 };
-export default app;
+export default App;
