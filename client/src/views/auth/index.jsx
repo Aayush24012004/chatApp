@@ -1,8 +1,15 @@
 import Background from "@/assets/login2.png";
 import Victory from "@/assets/victory.svg";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Tabs, TabsTrigger, TabsContent, TabsList } from "@radix-ui/react-tabs";
-
+import { useState } from "react";
 const Auth = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const handelLogin = async () => {};
+  const handelSignup = async () => {};
   return (
     <div className="h-[100vh] w-[100vw] flex items-center justify-center">
       <div className="h-[80vh] bg-white border-2 border-white text-opacity-90 shadow-2xl w-[80vw] md:w-[90vw] lg:w-[70vw] xl:w-[60vw] rounded-3xl grid xl:grid-cols-2">
@@ -39,10 +46,56 @@ const Auth = () => {
                   Signup
                 </TabsTrigger>
               </TabsList>
-              <TabsContent className="" value="login"></TabsContent>
-              <TabsContent className="" value="signup"></TabsContent>
+              <TabsContent className="flex flex-col gap-5 mt-10" value="login">
+                <Input
+                  placeholder="Email"
+                  value={email}
+                  className="rounded-full p-6"
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <Input
+                  placeholder="Password"
+                  value={password}
+                  className="rounded-full p-6"
+                  type="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <Button className="rounded-full pd-6" onClick={handelLogin}>
+                  Login
+                </Button>
+              </TabsContent>
+              <TabsContent className="flex flex-col gap-5 " value="signup">
+                <Input
+                  placeholder="Email"
+                  value={email}
+                  className="rounded-full p-6"
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <Input
+                  placeholder="Password"
+                  value={password}
+                  className="rounded-full p-6"
+                  type="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <Input
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  className="rounded-full p-6"
+                  type="password"
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <Button className="rounded-full pd-6" onClick={handelSignup}>
+                  Signup
+                </Button>
+              </TabsContent>
             </Tabs>
           </div>
+        </div>
+        <div className="hidden xl:flex justify-center item-center">
+          <img src={Background} alt="Login background image" />
         </div>
       </div>
     </div>
